@@ -6,11 +6,8 @@ const path = require('path');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+app.use(express.static(__dirname)); 
 
 app.post('/upload', async (req, res) => {
     const imageUrl = req.body.imageUrl;
@@ -22,7 +19,7 @@ app.post('/upload', async (req, res) => {
             responseType: 'stream',
         });
 
-        const tempFilePath = path.join('/tmp', 'temp.jpg');
+        const tempFilePath = path.join(__dirname, 'temp.jpg');
         const writer = fs.createWriteStream(tempFilePath);
         response.data.pipe(writer);
 

@@ -1,15 +1,15 @@
 {
     "version": 2,
+    "name": "my-app",
     "builds": [
-        {
-            "src": "./server.js",
-            "use": "@vercel/node"
-        }
+      { "src": "index.html", "use": "@vercel/static" },
+      { "src": "styles.css", "use": "@vercel/static" },
+      { "src": "script.js", "use": "@vercel/node" },
+      { "src": "server.js", "use": "@vercel/node" }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
+      { "src": "/(.*).css", "dest": "/styles.css" },
+      { "src": "/(.*).js", "dest": "/script.js" },
+      { "src": "/(.*).html", "dest": "/index.html" }
     ]
-}
+  }

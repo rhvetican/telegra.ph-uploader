@@ -7,7 +7,8 @@ const path = require('path');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname)); 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/upload', async (req, res) => {
     const imageUrl = req.body.imageUrl;
@@ -45,10 +46,11 @@ app.post('/upload', async (req, res) => {
 
         res.send(`https://te.legra.ph${uploadResponse.data[0].src}`);
     } catch (error) {
-        res.send(`Error: ${error.message}`);
+        res.status(500).send(`Error: ${error.message}`);
     }
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

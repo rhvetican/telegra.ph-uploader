@@ -20,7 +20,7 @@ app.post('/upload', async (req, res) => {
             responseType: 'stream',
         });
 
-        const tempFilePath = path.join(__dirname, 'temp.jpg');
+        const tempFilePath = path.join('/tmp', 'temp.jpg');
         const writer = fs.createWriteStream(tempFilePath);
         response.data.pipe(writer);
 
@@ -34,7 +34,6 @@ app.post('/upload', async (req, res) => {
             filename: 'temp.jpg',
             contentType: 'image/jpg',
         });
-
         const uploadResponse = await axios({
             method: 'POST',
             url: 'https://te.legra.ph/upload',

@@ -36,14 +36,14 @@ app.post('/upload', async (req, res) => {
         });
         const uploadResponse = await axios({
             method: 'POST',
-            url: 'https://te.legra.ph/upload',
+            url: 'https://graph.org/upload',
             data: form,
             headers: form.getHeaders(),
         });
 
         fs.unlinkSync(tempFilePath);
 
-        res.send(`https://te.legra.ph${uploadResponse.data[0].src}`);
+        res.send(`https://graph.org${uploadResponse.data[0].src}`);
     } catch (error) {
         res.status(500).send(`Error: ${error.message}`);
     }

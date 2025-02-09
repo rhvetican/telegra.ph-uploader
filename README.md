@@ -1,3 +1,5 @@
+## Currently Depreciated after telegram stopped image upload  
+
 # Image Uploader to telegra.ph
 
 This project is a simple web application that allows users to upload images to telegra.ph via a direct URL. The application is built with Node.js and Express and uses Axios for making HTTP requests.

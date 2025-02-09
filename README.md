@@ -1,4 +1,5 @@
-## Currently Depreciated after telegram stopped image upload  
+## deprecated due to Telegram's discontinuation of this functionality
+
 
 # Image Uploader to telegra.ph
 
